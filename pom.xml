@@ -120,14 +120,14 @@
 		</dependency>
 	</dependencies>
 
-	 <build>
+   <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -136,7 +136,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>consumer.consumer</mainClass>
+                            <mainClass>matrix_consumer.matrix_consumer</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -164,7 +164,7 @@
 
                     <!-- (optional) name for binary executable, if not set will just -->
                     <!-- make the regular jar artifact executable -->
-                    <programFile>video_consumer</programFile>
+                    <programFile>consumer</programFile>
                 </configuration>
 
                 <executions>
@@ -178,7 +178,6 @@
             </plugin>
         </plugins>
     </build>
-  
 
 
 
