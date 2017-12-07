@@ -36,6 +36,7 @@ public class cuda_matrix {
 	CUdeviceptr deviceInputA;
 	CUdeviceptr deviceInputB;
 	CUdeviceptr deviceOutput;
+	int block_size=16;				//block size
 	
 	public cuda_matrix(int input_width){
 	
@@ -81,12 +82,12 @@ public class cuda_matrix {
 			
 		
 		for (int i = 0; i < numElemnets; i++) {
-					hostInputA[i] = (byte) (i%128);
-					hostInputB[i] = (byte)(i%128);
+					hostInputA[i] = (byte) (i%127);
+					hostInputB[i] = (byte)(i%127);
 				}
 			
-				hostInputA = input.clone();
-				hostInputB = input.clone();
+		//		hostInputA = input.clone();
+		//		hostInputB = input.clone();
 		
 				System.out.println("hostInputA[0] ="+hostInputA[0]);
 				System.out.println(hostInputA[0]);
@@ -122,12 +123,12 @@ public class cuda_matrix {
 			kernelParameters = Pointer.to(Pointer.to(deviceInputA),
 						Pointer.to(deviceInputB), Pointer.to(deviceOutput),Pointer.to(new int[] { width }));
 				// Call the kernel function.
-				blockSizeX = width; //the number of thread
+	//			blockSizeX = (width+block_size-1)/block_size; //the number of thread
 				// int gridSizeX = (int)Math.ceil((double)numElements / blockSizeX);
-				gridSizeX = width;	 //the number of block
+				gridSizeX = (width+block_size-1)/block_size;	 //the number of block
 			
 				cuLaunchKernel(function, gridSizeX, gridSizeX, 1, // Grid dimension //number of block
-						blockSizeX, blockSizeX, 1, // Block dimension //number of thread
+						block_size, block_size, 1, // Block dimension //number of thread
 						0, null, // Shared memory size and stream
 						kernelParameters, null // Kernel- and extra parameters
 				);

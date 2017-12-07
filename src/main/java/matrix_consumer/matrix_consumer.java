@@ -21,7 +21,7 @@ import kafka.message.MessageAndMetadata;
 public class matrix_consumer {
 
 	private static final String TOPIC = "supercom";
-	private static final int NUM_THREADS = 2;
+	private static final int NUM_THREADS = 1;
 
 	// static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
 	public static void main(String[] args) throws Exception {
@@ -31,6 +31,8 @@ public class matrix_consumer {
 		props.put("group.id", "super-group");
 		props.put("zookeeper.connect", "163.152.174.73:2182");
 		props.put("auto.commit.interval.ms", "100");
+		props.put("auto.offst.reset","largest");
+		
 		ConsumerConfig consumerConfig = new ConsumerConfig(props);
 		ConsumerConnector consumer = Consumer.createJavaConsumerConnector(consumerConfig);
 		Map<String, Integer> topicCountMap = new HashMap<String, Integer>();
