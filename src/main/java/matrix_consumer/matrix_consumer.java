@@ -31,7 +31,7 @@ public class matrix_consumer {
 		props.put("group.id", "super-group");
 		props.put("zookeeper.connect", "163.152.174.73:2182");
 		props.put("auto.commit.interval.ms", "100");
-		props.put("auto.offst.reset","largest");
+//		props.put("auto.offset.reset","smallest");
 		
 		ConsumerConfig consumerConfig = new ConsumerConfig(props);
 		ConsumerConnector consumer = Consumer.createJavaConsumerConnector(consumerConfig);
@@ -42,6 +42,7 @@ public class matrix_consumer {
 		ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
 
 		System.out.println("partial success!");
+//		final cuda_matrix jcuda_matrix = new cuda_matrix(23);		
 
 		for (final KafkaStream<byte[], byte[]> stream : streams) {   //for 문이 2개 들어가 있는게 문제~ thread pool을 1로 수정
 			System.out.println("for start! 1");
@@ -51,7 +52,7 @@ public class matrix_consumer {
 					public void run() {
 						
 					for (final MessageAndMetadata<byte[], byte[]> messageAndMetadata : stream) {
-						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				
+						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				////////////////////////// ptx 파일 계속 컴파일 하는 것을 다르게 코딩해야함
 						cuda_matrix jcuda_matrix = new cuda_matrix(23);		
 						System.out.println("for start! 3"); 
 						byte[] test = messageAndMetadata.message();
@@ -63,6 +64,7 @@ public class matrix_consumer {
 						// data.put(0, 0, test);
 						// frame.setVisible(true);
 						// frame.render(data);
+	//					jcuda_matrix.cudaCleanUp();
 						
 						System.out.println("one_complete! ");
 					

@@ -1,6 +1,7 @@
 package cuda_matrix;
 
 import static jcuda.driver.JCudaDriver.cuCtxCreate;
+import static jcuda.driver.JCudaDriver.cuCtxDestroy;
 import static jcuda.driver.JCudaDriver.cuCtxSynchronize;
 import static jcuda.driver.JCudaDriver.cuDeviceGet;
 import static jcuda.driver.JCudaDriver.cuInit;
@@ -37,6 +38,9 @@ public class cuda_matrix {
 	CUdeviceptr deviceInputB;
 	CUdeviceptr deviceOutput;
 	int block_size=16;				//block size
+	CUdevice device;
+	CUcontext context;
+	CUmodule module;	
 	
 	public cuda_matrix(int input_width){
 	
@@ -45,21 +49,22 @@ public class cuda_matrix {
 		JCudaDriver.setExceptionsEnabled(true);
 
 		// Create the PTX file by calling the NVCC
-		String ptxFileName = JCudaSamplesUtils
-				.preparePtxFile("src/main/resources/kernels/JCudaVectorMatrixMultiplication.cu");
+//		String ptxFileName = JCudaSamplesUtils
+//				.preparePtxFile("src/main/resources/kernels/JCudaVectorMatrixMultiplication.cu");
 
 		// Initialize the driver and create a context for the first device.
 		cuInit(0);
 		
 		
-		CUdevice device = new CUdevice();
+		device = new CUdevice();
 		cuDeviceGet(device, 0);
-		CUcontext context = new CUcontext();
+		context = new CUcontext();
 		cuCtxCreate(context, 0, device);
+		
 
 		// Load the ptx file.
-		CUmodule module = new CUmodule();
-		cuModuleLoad(module, ptxFileName);
+		module = new CUmodule();
+		cuModuleLoad(module, "src/main/resources/kernels/JCudaVectorMatrixMultiplication.ptx");
 
 		// Obtain a function pointer to the "add" function.
 		function = new CUfunction();
@@ -69,7 +74,7 @@ public class cuda_matrix {
 		numElemnets = (width) * (width);
 		
 		System.out.println("constructor has finished! ");
-		
+			
 	}
 	
 	public void prepare_cuda_memory(byte[] input)
@@ -138,15 +143,23 @@ public class cuda_matrix {
 				cuMemcpyDtoH(Pointer.to(hostOutput), deviceOutput, numElemnets * Sizeof.BYTE);
 				
 				
+				cuMemFree(deviceInputA);
+				cuMemFree(deviceInputB);
+				cuMemFree(deviceOutput);
+				
+				cuCtxDestroy(context);
+				
 				System.out.println("result hostOutput[0] = "+hostOutput[0]);
 				System.out.println("cuda has finished!");
+				
+								
 	}
 	
 	public void cudaCleanUp(){
 		// Clean up.
-		cuMemFree(deviceInputA);
-		cuMemFree(deviceInputB);
-		cuMemFree(deviceOutput);
+		
+	
+		
 		
 	}
 	
