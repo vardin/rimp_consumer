@@ -49,8 +49,8 @@ public class cuda_matrix {
 		JCudaDriver.setExceptionsEnabled(true);
 
 		// Create the PTX file by calling the NVCC
-		String ptxFileName = JCudaSamplesUtils
-				.preparePtxFile("src/main/resources/kernels/JCudaVectorMatrixMultiplication.cu");
+//		String ptxFileName = JCudaSamplesUtils
+//				.preparePtxFile("src/main/resources/kernels/JCudaVectorMatrixMultiplication.cu");
 
 		// Initialize the driver and create a context for the first device.
 		cuInit(0);
@@ -64,7 +64,8 @@ public class cuda_matrix {
 
 		// Load the ptx file.
 		module = new CUmodule();
-		cuModuleLoad(module, ptxFileName);
+//		cuModuleLoad(module, "src/main/resources/kernels/JCudaVectorMatrixMultiplication.ptx"); //window version
+		cuModuleLoad(module, "target/classes/kernels/JCudaVectorMatrixMultiplication.ptx"); //linux version
 
 		// Obtain a function pointer to the "add" function.
 		function = new CUfunction();

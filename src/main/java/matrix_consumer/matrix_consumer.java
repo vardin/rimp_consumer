@@ -31,7 +31,7 @@ public class matrix_consumer {
 		props.put("group.id", "super-group");
 		props.put("zookeeper.connect", "163.152.174.73:2182");
 		props.put("auto.commit.interval.ms", "100");
-//		props.put("auto.offset.reset","smallest");
+		props.put("auto.offset.reset", "smallest");
 		
 		ConsumerConfig consumerConfig = new ConsumerConfig(props);
 		ConsumerConnector consumer = Consumer.createJavaConsumerConnector(consumerConfig);
