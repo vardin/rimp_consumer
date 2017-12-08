@@ -53,7 +53,7 @@ public class matrix_consumer {
 						
 					for (final MessageAndMetadata<byte[], byte[]> messageAndMetadata : stream) {
 						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				////////////////////////// ptx 파일 계속 컴파일 하는 것을 다르게 코딩해야함
-						cuda_matrix jcuda_matrix = new cuda_matrix(23);		
+						cuda_matrix jcuda_matrix = new cuda_matrix(40);		
 						System.out.println("for start! 3"); 
 						byte[] test = messageAndMetadata.message();
 						
