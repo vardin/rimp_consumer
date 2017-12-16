@@ -44,7 +44,7 @@ public class matrix_consumer {
 		System.out.println("partial success!");
 //		final cuda_matrix jcuda_matrix = new cuda_matrix(23);		
 
-		for (final KafkaStream<byte[], byte[]> stream : streams) {   //for ¹®ÀÌ 2°³ µé¾î°¡ ÀÖ´Â°Ô ¹®Á¦~ thread poolÀ» 1·Î ¼öÁ¤
+		for (final KafkaStream<byte[], byte[]> stream : streams) {   //for ë¬¸ì´ 2ê°œ ë“¤ì–´ê°€ ìˆëŠ”ê²Œ ë¬¸ì œ~ thread poolì„ 1ë¡œ ìˆ˜ì •
 			System.out.println("for start! 1");
 			// MyFrame frame = new MyFrame(); 
 			
@@ -52,7 +52,7 @@ public class matrix_consumer {
 					public void run() {
 						
 					for (final MessageAndMetadata<byte[], byte[]> messageAndMetadata : stream) {
-						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				////////////////////////// ptx ÆÄÀÏ °è¼Ó ÄÄÆÄÀÏ ÇÏ´Â °ÍÀ» ´Ù¸£°Ô ÄÚµùÇØ¾ßÇÔ
+						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				////////////////////////// ptx íŒŒì¼ ê³„ì† ì»´íŒŒì¼ í•˜ëŠ” ê²ƒì„ ë‹¤ë¥´ê²Œ ì½”ë”©í•´ì•¼í•¨
 						cuda_matrix jcuda_matrix = new cuda_matrix(40);		
 						System.out.println("for start! 3"); 
 						byte[] test = messageAndMetadata.message();
