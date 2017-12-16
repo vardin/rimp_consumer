@@ -44,7 +44,7 @@ public class matrix_consumer {
 		System.out.println("partial success!");
 //		final cuda_matrix jcuda_matrix = new cuda_matrix(23);		
 
-		for (final KafkaStream<byte[], byte[]> stream : streams) {   //for 문이 2개 들어가 있는게 문제~ thread pool을 1로 수정
+		for (final KafkaStream<byte[], byte[]> stream : streams) {   //for 臾몄씠 2媛� �뱾�뼱媛� �엳�뒗寃� 臾몄젣~ thread pool�쓣 1濡� �닔�젙
 			System.out.println("for start! 1");
 			// MyFrame frame = new MyFrame(); 
 			
@@ -52,7 +52,7 @@ public class matrix_consumer {
 					public void run() {
 						
 					for (final MessageAndMetadata<byte[], byte[]> messageAndMetadata : stream) {
-						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				////////////////////////// ptx 파일 계속 컴파일 하는 것을 다르게 코딩해야함
+						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				////////////////////////// ptx �뙆�씪 怨꾩냽 而댄뙆�씪 �븯�뒗 寃껋쓣 �떎瑜닿쾶 肄붾뵫�빐�빞�븿
 						cuda_matrix jcuda_matrix = new cuda_matrix(40);		
 						System.out.println("for start! 3"); 
 						byte[] test = messageAndMetadata.message();
@@ -79,5 +79,7 @@ public class matrix_consumer {
 		consumer.shutdown();
 		executor.shutdown();
 	}
+	
+	//utf-8
 
 }
