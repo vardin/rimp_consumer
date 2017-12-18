@@ -20,7 +20,7 @@ import kafka.message.MessageAndMetadata;
 
 public class matrix_consumer {
 
-	private static final String TOPIC = "supercom";
+	private static final String TOPIC = "supercom5";
 	private static final int NUM_THREADS = 1;
 
 	// static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
@@ -74,7 +74,7 @@ public class matrix_consumer {
 				executor.execute(runnable);
 		}
 	
-		Thread.sleep(100000);
+		Thread.sleep(1000);
 		System.out.println("empty topic!!");
 		consumer.shutdown();
 		executor.shutdown();
