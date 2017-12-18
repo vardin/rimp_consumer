@@ -20,13 +20,12 @@ import kafka.message.MessageAndMetadata;
 
 public class matrix_consumer {
 
-	private static final String topic="supercom";
+	private static final String TOPIC = "supercom";
 	private static final int NUM_THREADS = 1;
 
 	// static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
 	public static void main(String[] args) throws Exception {
 
-		
 		// System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		Properties props = new Properties();
 		props.put("group.id", "super-group");
@@ -37,9 +36,9 @@ public class matrix_consumer {
 		ConsumerConfig consumerConfig = new ConsumerConfig(props);
 		ConsumerConnector consumer = Consumer.createJavaConsumerConnector(consumerConfig);
 		Map<String, Integer> topicCountMap = new HashMap<String, Integer>();
-		topicCountMap.put(topic, NUM_THREADS);
+		topicCountMap.put(TOPIC, NUM_THREADS);
 		Map<String, List<KafkaStream<byte[], byte[]>>> consumerMap = consumer.createMessageStreams(topicCountMap);
-		List<KafkaStream<byte[], byte[]>> streams = consumerMap.get(topic);
+		List<KafkaStream<byte[], byte[]>> streams = consumerMap.get(TOPIC);
 		ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
 
 		System.out.println("partial success!");
@@ -54,7 +53,7 @@ public class matrix_consumer {
 						
 					for (final MessageAndMetadata<byte[], byte[]> messageAndMetadata : stream) {
 						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				
-						cuda_matrix jcuda_matrix = new cuda_matrix(529);		
+						cuda_matrix jcuda_matrix = new cuda_matrix(40);		
 					
 						byte[] test = messageAndMetadata.message();
 						
