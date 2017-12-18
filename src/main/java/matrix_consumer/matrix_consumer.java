@@ -53,7 +53,7 @@ public class matrix_consumer {
 						
 					for (final MessageAndMetadata<byte[], byte[]> messageAndMetadata : stream) {
 						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				
-						cuda_matrix jcuda_matrix = new cuda_matrix(400);		
+						cuda_matrix jcuda_matrix = new cuda_matrix(30);		
 					
 						byte[] test = messageAndMetadata.message();
 						
