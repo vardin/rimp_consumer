@@ -44,7 +44,7 @@ public class matrix_consumer {
 		System.out.println("partial success!");
 //		final cuda_matrix jcuda_matrix = new cuda_matrix(23);		
 
-		for (final KafkaStream<byte[], byte[]> stream : streams) {   //for 臾몄씠 2媛� �뱾�뼱媛� �엳�뒗寃� 臾몄젣~ thread pool�쓣 1濡� �닔�젙
+		for (final KafkaStream<byte[], byte[]> stream : streams) {   //for 문 때문에 생기는 문제?
 			System.out.println("for start! 1");
 			// MyFrame frame = new MyFrame(); 
 			
