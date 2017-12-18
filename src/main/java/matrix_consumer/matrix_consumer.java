@@ -20,13 +20,13 @@ import kafka.message.MessageAndMetadata;
 
 public class matrix_consumer {
 
-	private static String topic;
+	private static final String topic="supercom";
 	private static final int NUM_THREADS = 1;
 
 	// static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
 	public static void main(String[] args) throws Exception {
 
-		topic=args[0];
+		
 		// System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		Properties props = new Properties();
 		props.put("group.id", "super-group");
