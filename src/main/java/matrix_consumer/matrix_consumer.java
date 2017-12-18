@@ -44,17 +44,17 @@ public class matrix_consumer {
 		System.out.println("partial success!");
 //		final cuda_matrix jcuda_matrix = new cuda_matrix(23);		
 
-		for (final KafkaStream<byte[], byte[]> stream : streams) {   //for 문 때문에 생기는 문제?
-			System.out.println("for start! 1");
+		for (final KafkaStream<byte[], byte[]> stream : streams) {   
+		
 			// MyFrame frame = new MyFrame(); 
 			
 				Runnable runnable = new Runnable() {
 					public void run() {
 						
 					for (final MessageAndMetadata<byte[], byte[]> messageAndMetadata : stream) {
-						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				////////////////////////// ptx �뙆�씪 怨꾩냽 而댄뙆�씪 �븯�뒗 寃껋쓣 �떎瑜닿쾶 肄붾뵫�빐�빞�븿
+						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				
 						cuda_matrix jcuda_matrix = new cuda_matrix(40);		
-						System.out.println("for start! 3   "); 
+					
 						byte[] test = messageAndMetadata.message();
 						
 						System.out.println(test.length);
