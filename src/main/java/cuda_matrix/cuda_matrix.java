@@ -90,21 +90,18 @@ public class cuda_matrix {
 		for (int i = 0; i < numElemnets; i++) {
 					hostInputA[i] = (byte) (i%127);
 					hostInputB[i] = (byte)(i%127);
-				}
+				} 
 			
-		//		hostInputA = input.clone();
-		//		hostInputB = input.clone();
+	//			hostInputA = input.clone();
+	//			hostInputB = input.clone();
 		
-				System.out.println("hostInputA[0] ="+hostInputA[0]);
-				System.out.println(hostInputA[0]);
-				System.out.println(hostInputA[1]);
+	//			System.out.println("hostInputA[0] ="+hostInputA[0]);
+	//			System.out.println(hostInputA[0]);
+	//			System.out.println(hostInputA[1]);
 				
 				// Allocate the device input data, and copy the
 				// host input data to the device
-				
-		//		hostInputA = InputA;
-	//			hostInputB = InputA;
-				
+								
 		
 				deviceInputA = new CUdeviceptr();
 				cuMemAlloc(deviceInputA, numElemnets * Sizeof.BYTE);
@@ -113,7 +110,7 @@ public class cuda_matrix {
 				deviceOutput = new CUdeviceptr();
 				cuMemAlloc(deviceOutput, numElemnets * Sizeof.BYTE);
 		
-				System.out.println("before Memcpy!");
+	//			System.out.println("before Memcpy!");
 				
 				cuMemcpyHtoD(deviceInputA, Pointer.to(hostInputA), numElemnets * Sizeof.BYTE);
 
@@ -121,7 +118,7 @@ public class cuda_matrix {
 
 				// Allocate device output memory
 
-				System.out.println("after Memcpy!");
+	//			System.out.println("after Memcpy!");
 				
 				// Set up the kernel parameters: A pointer to an array
 				// of pointers which point to the actual values.

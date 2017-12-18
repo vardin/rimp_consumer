@@ -57,7 +57,7 @@ public class matrix_consumer {
 					
 						byte[] test = messageAndMetadata.message();
 						
-						System.out.println(test.length);
+			//			System.out.println(test.length);
 						jcuda_matrix.prepare_cuda_memory(test);
 				
 						// Mat data = new Mat(480, 640, CvType.CV_8UC3);
@@ -66,7 +66,7 @@ public class matrix_consumer {
 						// frame.render(data);
 	//					jcuda_matrix.cudaCleanUp();
 						
-						System.out.println("one_complete! ");
+						System.out.println("Processing complete! ");
 					
 			}
 					}
