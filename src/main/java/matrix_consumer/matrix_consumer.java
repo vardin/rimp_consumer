@@ -20,13 +20,13 @@ import kafka.message.MessageAndMetadata;
 
 public class matrix_consumer {
 
-	private static String TOPIC;
+	private static String topic;
 	private static final int NUM_THREADS = 1;
 
 	// static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
 	public static void main(String[] args) throws Exception {
 
-		TOPIC=args[0];
+		topic=args[0];
 		// System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		Properties props = new Properties();
 		props.put("group.id", "super-group");
@@ -37,9 +37,9 @@ public class matrix_consumer {
 		ConsumerConfig consumerConfig = new ConsumerConfig(props);
 		ConsumerConnector consumer = Consumer.createJavaConsumerConnector(consumerConfig);
 		Map<String, Integer> topicCountMap = new HashMap<String, Integer>();
-		topicCountMap.put(TOPIC, NUM_THREADS);
+		topicCountMap.put(topic, NUM_THREADS);
 		Map<String, List<KafkaStream<byte[], byte[]>>> consumerMap = consumer.createMessageStreams(topicCountMap);
-		List<KafkaStream<byte[], byte[]>> streams = consumerMap.get(TOPIC);
+		List<KafkaStream<byte[], byte[]>> streams = consumerMap.get(topic);
 		ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
 
 		System.out.println("partial success!");
