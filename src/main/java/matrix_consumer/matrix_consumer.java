@@ -20,7 +20,7 @@ import kafka.message.MessageAndMetadata;
 
 public class matrix_consumer {
 
-	private static final String TOPIC = "supercom21";
+	private static final String TOPIC = "supercom14";
 	private static final int NUM_THREADS = 1;
 
 	// static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
@@ -53,7 +53,7 @@ public class matrix_consumer {
 						
 					for (final MessageAndMetadata<byte[], byte[]> messageAndMetadata : stream) {
 //						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				
-						cuda_matrix jcuda_matrix = new cuda_matrix(30);		
+						cuda_matrix jcuda_matrix = new cuda_matrix(50);		
 					
 						byte[] test = messageAndMetadata.message();
 						
