@@ -74,7 +74,7 @@ public class cuda_matrix {
 		this.width = input_width*input_width;
 		numElemnets = (width) * (width);
 		
-		System.out.println("constructor has finished! ");
+//		System.out.println("constructor has finished! ");
 			
 	}
 	
@@ -147,8 +147,8 @@ public class cuda_matrix {
 				
 				cuCtxDestroy(context);
 				
-				System.out.println("result hostOutput[0] = "+hostOutput[0]);
-				System.out.println("cuda has finished!");
+//				System.out.println("result hostOutput[0] = "+hostOutput[0]);
+//				System.out.println("cuda has finished!");
 				
 								
 	}

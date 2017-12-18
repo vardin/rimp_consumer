@@ -20,7 +20,7 @@ import kafka.message.MessageAndMetadata;
 
 public class matrix_consumer {
 
-	private static final String TOPIC = "supercom14";
+	private static final String TOPIC = "supercom15";
 	private static final int NUM_THREADS = 1;
 
 	// static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
@@ -41,7 +41,7 @@ public class matrix_consumer {
 		List<KafkaStream<byte[], byte[]>> streams = consumerMap.get(TOPIC);
 		ExecutorService executor = Executors.newFixedThreadPool(NUM_THREADS);
 
-		System.out.println("partial success!");
+//		System.out.println("partial success!");
 //		final cuda_matrix jcuda_matrix = new cuda_matrix(23);		
 
 		for (final KafkaStream<byte[], byte[]> stream : streams) {   
@@ -52,7 +52,7 @@ public class matrix_consumer {
 					public void run() {
 						
 					for (final MessageAndMetadata<byte[], byte[]> messageAndMetadata : stream) {
-						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				
+//						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				
 						cuda_matrix jcuda_matrix = new cuda_matrix(30);		
 					
 						byte[] test = messageAndMetadata.message();
@@ -66,7 +66,7 @@ public class matrix_consumer {
 						// frame.render(data);
 	//					jcuda_matrix.cudaCleanUp();
 						
-						System.out.println("Processing complete! ");
+//						System.out.println("Processing complete! ");
 					
 			}
 					}
