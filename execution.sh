@@ -1,1 +1,1 @@
-time /target/video_consumer
+time ./target/video_consumer
