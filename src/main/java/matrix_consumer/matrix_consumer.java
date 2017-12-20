@@ -32,6 +32,7 @@ public class matrix_consumer {
 		Properties props = new Properties();
 		props.put("group.id", "super-group");
 		props.put("zookeeper.connect", "163.152.174.73:2182");
+		props.put("zk.connectiontimeout.ms", "1000000");
 		props.put("auto.commit.interval.ms", "100");
 		props.put("auto.offset.reset", "smallest");
 		
