@@ -1,6 +1,7 @@
 package matrix_consumer;
 
 import cuda_matrix.cuda_matrix;
+import mat_mul.mat_mul;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,10 +21,11 @@ import kafka.message.MessageAndMetadata;
 
 public class matrix_consumer {
 
-	private static final String TOPIC = "gpu6";
+	private static final String TOPIC = "cpu1";
 	private static final int NUM_THREADS = 1;
 
 	// static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
+	
 	public static void main(String[] args) throws Exception {
 
 		// System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -53,12 +55,18 @@ public class matrix_consumer {
 						
 					for (final MessageAndMetadata<byte[], byte[]> messageAndMetadata : stream) {
 //						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				
-						cuda_matrix jcuda_matrix = new cuda_matrix(50);		
+			//			cuda_matrix jcuda_matrix = new cuda_matrix(50);		    //cuda
+						
+						
 					
 						byte[] test = messageAndMetadata.message();
 						
 			//			System.out.println(test.length);
-						jcuda_matrix.prepare_cuda_memory(test);
+			//			jcuda_matrix.prepare_cuda_memory(test);				//cuda
+						
+						mat_mul cpu_mul = new mat_mul(30);
+						cpu_mul.multiply();
+														
 				
 						// Mat data = new Mat(480, 640, CvType.CV_8UC3);
 						// data.put(0, 0, test);
