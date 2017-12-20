@@ -33,7 +33,7 @@ public class matrix_consumer {
 		props.put("group.id", "super-group");
 		props.put("zookeeper.connect", "163.152.174.73:2182");
 		props.put("zk.connectiontimeout.ms", "1000000");
-		props.put("zookeeper.session.timeout.ms", "1000000");
+		props.put("zookeeper.session.timeout.ms", "1000000");	// 계산량이 복잡할 경우 큰 수를 넣어주어야함
 		props.put("auto.commit.interval.ms", "6000");
 		props.put("auto.offset.reset", "smallest");
 		
@@ -66,7 +66,7 @@ public class matrix_consumer {
 			//			System.out.println(test.length);
 			//			jcuda_matrix.prepare_cuda_memory(test);				//cuda
 						
-						mat_mul cpu_mul = new mat_mul(40);
+						mat_mul cpu_mul = new mat_mul(10);
 						cpu_mul.multiply();
 														
 				
