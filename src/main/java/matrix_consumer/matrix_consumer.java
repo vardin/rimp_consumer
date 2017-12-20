@@ -82,7 +82,7 @@ public class matrix_consumer {
 				executor.execute(runnable);
 		}
 	
-		Thread.sleep(10000000);
+		Thread.sleep(90000000);
 		System.out.println("empty topic!!");
 		consumer.shutdown();
 		executor.shutdown();
