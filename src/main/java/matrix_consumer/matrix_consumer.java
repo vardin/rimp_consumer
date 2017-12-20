@@ -66,7 +66,7 @@ public class matrix_consumer {
 			//			System.out.println(test.length);
 			//			jcuda_matrix.prepare_cuda_memory(test);				//cuda
 						
-						mat_mul cpu_mul = new mat_mul(10);
+						mat_mul cpu_mul = new mat_mul(40);
 						cpu_mul.multiply();
 														
 				
