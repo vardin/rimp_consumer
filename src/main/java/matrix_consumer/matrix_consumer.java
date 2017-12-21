@@ -21,7 +21,7 @@ import kafka.message.MessageAndMetadata;
 
 public class matrix_consumer {
 
-	private static final String TOPIC = "cpu2500";
+	private static final String TOPIC = "gpu1";
 	private static final int NUM_THREADS = 1;
 
 	// static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
@@ -66,7 +66,7 @@ public class matrix_consumer {
 			//			System.out.println(test.length);
 			//			jcuda_matrix.prepare_cuda_memory(test);				//cuda
 						
-						mat_mul cpu_mul = new mat_mul(50);
+						mat_mul cpu_mul = new mat_mul(30);
 						cpu_mul.multiply();
 														
 				
