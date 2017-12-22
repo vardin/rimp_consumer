@@ -21,7 +21,7 @@ import kafka.message.MessageAndMetadata;
 
 public class matrix_consumer {
 
-	private static final String TOPIC = "gpu1";
+	private static final String TOPIC = "3partition";
 	private static final int NUM_THREADS = 1;
 
 	// static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
@@ -57,17 +57,17 @@ public class matrix_consumer {
 						
 					for (final MessageAndMetadata<byte[], byte[]> messageAndMetadata : stream) {
 //						System.out.println("for start! 2 thread name : "+ Thread.currentThread().getName());				
-			//			cuda_matrix jcuda_matrix = new cuda_matrix(50);		    //cuda
+						cuda_matrix jcuda_matrix = new cuda_matrix(10);		    //cuda
 						
 						
 					
 						byte[] test = messageAndMetadata.message();
 						
 			//			System.out.println(test.length);
-			//			jcuda_matrix.prepare_cuda_memory(test);				//cuda
+						jcuda_matrix.prepare_cuda_memory(test);				//cuda
 						
-						mat_mul cpu_mul = new mat_mul(30);
-						cpu_mul.multiply();
+			//			mat_mul cpu_mul = new mat_mul(30);	//cpu
+			//			cpu_mul.multiply();					//cpu
 														
 				
 						// Mat data = new Mat(480, 640, CvType.CV_8UC3);
