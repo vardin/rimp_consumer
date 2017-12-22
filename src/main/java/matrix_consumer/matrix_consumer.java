@@ -21,7 +21,7 @@ import kafka.message.MessageAndMetadata;
 
 public class matrix_consumer {
 
-	private static final String TOPIC = "3partition";
+	private static final String TOPIC = "3partition1";
 	private static final int NUM_THREADS = 1;
 
 	// static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
