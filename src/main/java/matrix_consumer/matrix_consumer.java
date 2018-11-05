@@ -21,7 +21,7 @@ import kafka.message.MessageAndMetadata;
 
 public class matrix_consumer {
 
-	private static final String TOPIC = "supercom6";
+	private static final String TOPIC = "supercom";
 	private static final int NUM_THREADS = 1;
 
 	// static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME); }
@@ -31,7 +31,7 @@ public class matrix_consumer {
 		// System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		Properties props = new Properties();
 		props.put("group.id", "super-group");
-		props.put("zookeeper.connect", "163.152.174.73:2182");
+		props.put("zookeeper.connect", "163.152.174.61:2182");
 		props.put("zk.connectiontimeout.ms", "1000000");
 		props.put("zookeeper.session.timeout.ms", "1000000");	// 계산량이 복잡할 경우 큰 수를 넣어주어야함
 		props.put("auto.commit.interval.ms", "6000");
